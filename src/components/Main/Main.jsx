@@ -8,7 +8,7 @@ const Main = () => {
             <div className={cls.logo}>
                 <img className={"animate__animated animate__rotateIn"} src={logoImg} alt=""/>
                 <div className={cls.container_main_header}>
-                    <h1 className={cls.main_header + " " + "animate__animated animate__fadeInUp"}>Slave</h1>
+                    <h1 className={cls.main_header + " " + "animate__animated animate__fadeInUp"}>VSea</h1>
                 </div>
             </div>
 
