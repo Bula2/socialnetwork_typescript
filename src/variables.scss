@@ -1,0 +1,10 @@
+$back-color: #c08bee;
+//$main-color: #f68bff;
+$main-color: #e5c8ee;
+$button-color: #9ce7a8;
+
+@mixin content {
+  grid-area: content;
+  background-color: $back-color;
+  border-radius: 5px;
+}

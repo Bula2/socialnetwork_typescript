@@ -1,0 +1,75 @@
+@import "../../variables";
+
+.news{
+  width: 98%;
+  .news_header{
+    margin-left: 40px;
+    margin-top: 20px;
+    --animate-duration: 1.5s;
+    color: #282727;
+    font-weight: 300;
+    border-bottom: 1.5px solid black;
+    width: 70%;
+  }
+}
+
+.news_list{
+  --animate-duration: 2s;
+}
+
+.news_post{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  border: 2px solid $main-color;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px auto;
+  width: 90%;
+  .left_part_news{
+    display: grid;
+    grid-template-rows: 0.5fr 2fr 0.5fr;
+    p{
+      margin-top: 10px;
+      font-weight: normal;
+    }
+    h3{
+      font-weight: 300;
+      font-size: 1.3em;
+    }
+    .likes {
+      margin-top: 10px;
+    }
+  }
+
+  img{
+    border-radius: 10px;
+    border: 3px solid black;
+    width: 300px;
+    height: 220px;
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+}
+
+.like_was_add{
+  color: #FDD641;
+}
+
+@media (max-width: 1050px) {
+  .news_post{
+    img{
+      width: 230px;
+      height: 160px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .news_post{
+    img{
+      width: 190px;
+      height: 120px;
+    }
+  }
+}
+

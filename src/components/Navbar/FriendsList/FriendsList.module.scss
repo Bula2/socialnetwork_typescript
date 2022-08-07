@@ -1,0 +1,15 @@
+@import "../../../variables";
+
+.friends_avatar {
+  margin-top: 10px;
+  margin-left: -10px;
+  a{
+    margin-left: 10px;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid black;
+    }
+  }
+}

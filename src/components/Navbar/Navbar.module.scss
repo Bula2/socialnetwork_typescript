@@ -1,0 +1,27 @@
+@import "../../variables";
+
+.nav {
+  grid-area: nav;
+  background-color: $back-color;
+  border-radius: 5px;
+  font-size: 1.4em;
+
+  .item {
+    margin: 20px 20px 0 14px;
+
+    a:hover {
+      border-bottom: 1.5px solid black;
+      transition: 0.1s ease;
+    }
+
+    a.active {
+      color: #504f4f;
+
+      &:hover {
+        border-bottom: 1.5px solid #504f4f;
+        transition: 0.1s ease;
+      }
+    }
+  }
+}
+

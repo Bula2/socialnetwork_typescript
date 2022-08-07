@@ -1,0 +1,43 @@
+@import "../../variables";
+
+.setting_header{
+  margin-left: 40px;
+  margin-top: 20px;
+  --animate-duration: 1.5s;
+  color: #282727;
+  font-weight: 300;
+  border-bottom: 1.5px solid black;
+  width: 70%;
+}
+
+.settings{
+  width: 98%;
+  padding: 5px;
+}
+
+.setting_list{
+  margin-left: 40px;
+  margin-top: 20px;
+  --animate-duration: 2s;
+  div{
+    margin-top: 10px;
+  }
+  a{
+    &:hover{
+      border-bottom: 1.5px solid black;
+    }
+  }
+}
+
+.language{
+  select{
+    color: black;
+    margin-left: 15px;
+    width: 100px;
+    border: 1.5px solid black;
+    outline : none;
+    border-radius: 10px;
+    padding: 2px;
+    background-color: $main-color;
+  }
+}

@@ -1,0 +1,17 @@
+@import "../../../variables";
+
+.item {
+  margin-bottom: 6px;
+
+  a:hover {
+    border-bottom: 1.5px solid black;
+  }
+
+  .active {
+    color: #504f4f;
+
+    &:hover {
+      border-bottom: 1.5px solid #504f4f;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@import "../../../variables";
+
+.error{
+  textarea, input {
+    border: 2px solid orangered;
+  }
+  .error_text {
+    color: orangered;
+    font-size: 1.1em;
+  }
+}
+

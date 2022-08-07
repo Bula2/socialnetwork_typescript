@@ -1,0 +1,49 @@
+@import "../../variables";
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+.main {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  img {
+    width: 200px;
+    --animate-duration: 2s;
+  }
+}
+
+.container_main_header {
+  margin-top: 5px;
+  margin-left: 8%;
+
+  .main_header {
+    --animate-duration: 2s;
+    font-weight: normal;
+    font-size: 4em;
+    color: black;
+    font-family: 'Comfortaa', cursive;
+  }
+}
+
+.main_header {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .logo {
+    img {
+      width: 110px;
+    }
+  }
+  .container_main_header {
+    margin-left: 12%;
+    .main_header {
+      font-size: 2em;
+    }
+  }
+}
+
+
+

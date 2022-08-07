@@ -1,0 +1,55 @@
+@import "../../../variables";
+
+.header_my_posts {
+  font-size: 1.9em;
+  margin: 60px 0 0 35px;
+}
+
+.make_posts {
+  margin: 20px 0 0 30px;
+
+  textarea {
+    margin-top: 10px;
+    resize: none;
+    width: 90%;
+    height: 50px;
+    outline: none;
+    border-radius: 5px;
+    border: 1.5px solid #000000;
+    background: $main-color;
+    color: black;
+    font-size: 1.2em;
+    padding: 4px;
+
+    &::placeholder {
+      color: #968b8b;
+    }
+  }
+
+  button {
+    float: right;
+    margin: 5px 8.8% 0 0;
+    width: 100px;
+    height: 40px;
+    background: #9ce7a8;
+    border: 1.5px solid #151313;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+
+    &:hover{
+      border: 2px solid #151313;
+    }
+  }
+}
+
+.posts {
+  max-width: 1000px;
+  margin: 80px 0 40px 40px;
+}
+
+@media (max-width: 720px) {
+    .make_posts{
+      width: 85%;
+    }
+}

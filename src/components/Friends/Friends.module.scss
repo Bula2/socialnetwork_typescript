@@ -1,0 +1,58 @@
+@import "../../variables";
+
+.friends{
+  width: 98%;
+}
+
+.friends_header{
+  margin-left: 40px;
+  margin-top: 20px;
+  --animate-duration: 1.5s;
+  color: #282727;
+  font-weight: 300;
+  border-bottom: 1.5px solid black;
+  width: 70%;
+}
+
+.friends_list{
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px;
+  --animate-duration: 2s;
+}
+
+.friend{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 70%;
+  border: 2px solid $main-color;
+  border-radius: 20px;
+  margin: 15px 0 0 20px;
+  padding: 10px;
+  img{
+    width: 100px;
+    height: 75px;
+    border-radius: 20px;
+    border: 2px solid black;
+    margin-right: 10px;
+    &:hover{
+      transition: .3s ease-in-out;
+      border: 2px solid $main-color;
+    }
+  }
+  a:hover{
+    border-bottom: 1.5px solid black;
+  }
+}
+
+.friend_info{
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+
+@media (max-width: 1000px) {
+  .friend{
+    width: 80%;
+  }
+}

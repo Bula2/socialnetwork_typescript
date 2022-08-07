@@ -1,0 +1,67 @@
+@import "../../variables";
+
+.users {
+  min-height: 780px;
+}
+
+.preloader{
+  display: flex;
+  justify-content: center;
+}
+
+.item {
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 1.5px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.left_part {
+  margin-left: 20px;
+
+  img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1.5px solid black;
+  }
+
+  button {
+    width: 80px;
+    height: 40px;
+    padding: 4px;
+    background-color: $button-color;
+    border: 1.5px solid black;
+    border-radius: 10px;
+
+    &:hover {
+      border: 2px solid black;
+    }
+  }
+}
+
+.central_part {
+  font-size: 1.2em;
+
+  .name {
+    margin-top: 10px
+  }
+
+  .status {
+    margin-top: 60px;
+    font-size: 0.8em;
+  }
+}
+
+.right_part {
+  .country {
+    margin-top: 10px
+  }
+
+  .city {
+    margin-top: 10px;
+  }
+}

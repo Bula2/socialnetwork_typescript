@@ -1,0 +1,35 @@
+@import "../../../../variables";
+
+.item {
+  word-wrap: break-word;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  border-bottom: 1.5px solid black;
+  width: 90%;
+
+  img{
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid black;
+    border-radius: 50%;
+    margin-right: 2%;
+    margin-bottom: -4px;
+  }
+
+  .likes{
+    margin-right: -32px;
+    margin-top: 8px;
+    float: right;
+    font-size: 0.75em;
+  }
+}
+
+.like_was_add{
+  color: #FDD641;
+}
+
+@media (max-width: 720px) {
+  .item{
+    width: 80%;
+  }
+}

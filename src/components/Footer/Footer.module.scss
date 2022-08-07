@@ -1,0 +1,34 @@
+@import "../../variables";
+
+.footer {
+  grid-area: footer;
+  background-color: $back-color;
+  border-radius: 5px;
+}
+
+.footer_text{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 4px;
+  font-size: 1.1em;
+  &:first-child{
+    margin-left: 15px;
+  }
+  &:last-child{
+    margin-right: 15px;
+  }
+  .we_are_slavers {
+    &:hover {
+      transition: 2s ease-in-out;
+      transform: rotateY(360deg);
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .footer_text{
+    font-size: 0.8em;
+  }
+}
+
