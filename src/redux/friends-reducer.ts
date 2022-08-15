@@ -5,7 +5,7 @@ const f4Img = require("../assets/img/f4.jpg");
 const f5Img = require("../assets/img/f5.jpg");
 const f6Img = require("../assets/img/f6.jpg");
 
-type friendsListType = {
+type FriendsListType = {
     id: number,
     avatar: string,
     name: string
@@ -19,12 +19,12 @@ let initialState = {
     {id: 4, avatar: f4Img, name: "Дилан"},
     {id: 5, avatar: f5Img, name: "Томмо"},
     {id: 6, avatar: f6Img, name: "Эш"}
-    ] as Array<friendsListType>
+    ] as Array<FriendsListType>
 }
 
-export type initialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
-const friendsReducer = (state = initialState, action: any):initialStateType => {
+const friendsReducer = (state = initialState, action: any):InitialStateType => {
     switch (action.type) {
         default:
             return state

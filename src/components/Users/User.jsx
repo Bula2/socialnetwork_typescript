@@ -3,7 +3,7 @@ import cls from "./Users.module.scss"
 import {NavLink} from "react-router-dom";
 import defaultUserImg from "./../../assets/img/default_user.png"
 
-let User = ({user, ...props}) => {
+let User = ({user, followingInProgress, unfollow,follow}) => {
 
     return <div key={user.id} className={cls.item}>
         <div className={cls.left_part}>
@@ -14,13 +14,13 @@ let User = ({user, ...props}) => {
             </NavLink>
             <div>
                 {user.inFriends ?
-                    <button disabled={props.followingInProgress.some(id => id === user.id)}
+                    <button disabled={followingInProgress.some(id => id === user.id)}
                             onClick={() => {
-                                props.unfollow(user.id);
+                                unfollow(user.id);
                             }}>Убрать из друзья</button>
-                    : <button disabled={props.followingInProgress.some(id => id === user.id)}
+                    : <button disabled={followingInProgress.some(id => id === user.id)}
                               onClick={() => {
-                                  props.follow(user.id)
+                                  follow(user.id)
                               }}>Добавить в друзья</button>
                 }
             </div>

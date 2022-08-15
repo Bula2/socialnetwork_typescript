@@ -1,6 +1,6 @@
 import {profileAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
-import {postDataType, profilePhotosType, profileType} from "../types/types";
+import {PostDataType, ProfilePhotosType, ProfileType} from "../types/types";
 
 const ADD_POST = "profile/ADD-POST";
 const SET_USER_PROFILE = "profile/SET-USER-PROFILE";
@@ -18,16 +18,16 @@ let initialState = {
         {id: 3, post: "Любовь душой, а не глазами смотрит", likes: 8, likeWasAdd: false},
         {id: 2, post: "И оттого крылатый Купидон", likes: 16, likeWasAdd: false},
         {id: 1, post: "Представлен нам слепым и безрассудным", likes: 32, likeWasAdd: false},
-    ] as Array<postDataType>,
-    profile: null as profileType | null,
+    ] as Array<PostDataType>,
+    profile: null as ProfileType | null,
     status: "",
     newPostText: "",
     isPhotoUpload: false
 };
 
-type initialStateType = typeof initialState
+type InitialStateType = typeof initialState
 
-const profileReducer = (state = initialState, action: any): initialStateType => {
+const profileReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -72,7 +72,7 @@ const profileReducer = (state = initialState, action: any): initialStateType => 
         case SAVE_PHOTO_SUCCESS: {
             return {
                 ...state,
-                profile: {...state.profile, photos: action.photos} as profileType
+                profile: {...state.profile, photos: action.photos} as ProfileType
             }
         }
 
@@ -102,21 +102,21 @@ const profileReducer = (state = initialState, action: any): initialStateType => 
             return state;
     }
 }
-type addPostType = {type: typeof ADD_POST, newPost: string}
-export const addPost = (newPost: string): addPostType => ({type: ADD_POST, newPost});
-type setUserProfile = {type: typeof SET_USER_PROFILE, profile: profileType}
-export const setUserProfile = (profile: profileType): setUserProfile => ({type: SET_USER_PROFILE, profile});
-type setUserStatusType = {type: typeof SET_USER_STATUS, status: string}
-export const setUserStatus = (status: string): setUserStatusType => ({type: SET_USER_STATUS, status});
-type deletePostType = {type: typeof DELETE_POST, id: number}
-export const deletePost = (id: number): deletePostType => ({type: DELETE_POST, id});
-type uploadPhotoType = {type: typeof UPLOAD_PHOTO, isPhotoUpload: boolean}
-export const uploadPhoto = (isPhotoUpload: boolean): uploadPhotoType => ({type: UPLOAD_PHOTO, isPhotoUpload});
-type savePhotoSuccessType = {type: typeof SAVE_PHOTO_SUCCESS, photos: profilePhotosType}
-export const savePhotoSuccess = (photos: profilePhotosType): savePhotoSuccessType => ({type: SAVE_PHOTO_SUCCESS, photos});
-type addDelLikeType = {type: typeof ADD_LIKE | typeof DEL_LIKE, id: number}
-export const addLike = (id: number): addDelLikeType => ({type: ADD_LIKE, id});
-export const delLike = (id: number): addDelLikeType => ({type: DEL_LIKE, id});
+type AddPostType = {type: typeof ADD_POST, newPost: string}
+export const addPost = (newPost: string): AddPostType => ({type: ADD_POST, newPost});
+type SetUserProfile = {type: typeof SET_USER_PROFILE, profile: ProfileType}
+export const setUserProfile = (profile: ProfileType): SetUserProfile => ({type: SET_USER_PROFILE, profile});
+type SetUserStatusType = {type: typeof SET_USER_STATUS, status: string}
+export const setUserStatus = (status: string): SetUserStatusType => ({type: SET_USER_STATUS, status});
+type DeletePostType = {type: typeof DELETE_POST, id: number}
+export const deletePost = (id: number): DeletePostType => ({type: DELETE_POST, id});
+type UploadPhotoType = {type: typeof UPLOAD_PHOTO, isPhotoUpload: boolean}
+export const uploadPhoto = (isPhotoUpload: boolean): UploadPhotoType => ({type: UPLOAD_PHOTO, isPhotoUpload});
+type SavePhotoSuccessType = {type: typeof SAVE_PHOTO_SUCCESS, photos: ProfilePhotosType}
+export const savePhotoSuccess = (photos: ProfilePhotosType): SavePhotoSuccessType => ({type: SAVE_PHOTO_SUCCESS, photos});
+type AddDelLikeType = {type: typeof ADD_LIKE | typeof DEL_LIKE, id: number}
+export const addLike = (id: number): AddDelLikeType => ({type: ADD_LIKE, id});
+export const delLike = (id: number): AddDelLikeType => ({type: DEL_LIKE, id});
 
 export const getProfile = (id: number) => async (dispatch: any) => {
     let response = await profileAPI.getProfile(id);
@@ -133,13 +133,13 @@ export const updateUserStatus = (status: string) => async (dispatch: any) => {
         dispatch(setUserStatus(status));
 }
 
-export const savePhoto = (photo: profilePhotosType) => async (dispatch: any) => {
+export const savePhoto = (photo: ProfilePhotosType) => async (dispatch: any) => {
     let response = await profileAPI.savePhoto(photo);
     if (response.data.resultCode === 0)
         dispatch(savePhotoSuccess(response.data.data.photos));
 }
 
-export const saveProfile = (profile: profileType) => async (dispatch: any, getState: any) => {
+export const saveProfile = (profile: ProfileType) => async (dispatch: any, getState: any) => {
     let response = await profileAPI.saveProfile(profile);
     if (response.data.resultCode === 0)
         dispatch(getProfile(getState().auth.userId))

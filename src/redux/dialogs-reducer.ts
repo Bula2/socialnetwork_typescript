@@ -3,12 +3,12 @@ const avatarImg =  require("./../assets/img/avatar.jpg");
 
 const ADD_MES = "dialogs/ADD-MES";
 
-type dialogsDataType = {
+type DialogsDataType = {
     id: number,
     name: string
 }
 
-type messagesDataType = {
+type MessagesDataType = {
     id: number,
     avatar: string,
     name: string,
@@ -22,7 +22,7 @@ let initialState = {
         {id: 3, name: "Дилан"},
         {id: 4, name: "Томмо"},
         {id: 5, name: "Карди"}
-    ] as Array<dialogsDataType>,
+    ] as Array<DialogsDataType>,
 
     messagesData: [
         {id: 1, avatar: f2Img , name: "Винни", message: "Столько слов осталось лишних"},
@@ -36,12 +36,12 @@ let initialState = {
             message: "Я запутался настолько," +
             "что уже не разобрать, не разобраться, не собрать тем более"
         },
-    ] as Array<messagesDataType>
+    ] as Array<MessagesDataType>
 };
 
-export type initialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
-const dialogsReducer = (state = initialState, action: any): initialStateType => {
+const dialogsReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case ADD_MES: {
             let newMes = {
@@ -60,12 +60,12 @@ const dialogsReducer = (state = initialState, action: any): initialStateType => 
     }
 }
 
-type addMesActionCreatorType = {
+type AddMesActionCreatorType = {
     type: typeof ADD_MES,
     mes: string
 }
 
-export const addMesActionCreator = (mes: string): addMesActionCreatorType => ({type: ADD_MES, mes})
+export const addMesActionCreator = (mes: string): AddMesActionCreatorType => ({type: ADD_MES, mes})
 
 
 export default dialogsReducer;

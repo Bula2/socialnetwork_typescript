@@ -5,7 +5,7 @@ const trackImg1 = require("./../assets/img/track1.jpg")
 const trackImg2 = require("./../assets/img/track2.png")
 const trackImg3 = require("./../assets/img/track3.jpg")
 
-type musicListType = {
+type MusicListType = {
     id: number,
     source: string,
     name: string,
@@ -18,12 +18,12 @@ let initialState = {
         {id: 1, source: track1, name: "Я и одиночество", author: "Три дня дождя", photo: trackImg1 },
         {id: 2, source: track2, name: "2017", author: "17 Seventeen", photo: trackImg2 },
         {id: 3, source: track3, name: "Бесполензые слова", author: "pyrokinesis", photo: trackImg3 }
-    ] as Array<musicListType>
+    ] as Array<MusicListType>
 }
 
-type initialStateType = typeof initialState;
+type InitialStateType = typeof initialState;
 
-const musicReducer = (state = initialState, action: any): initialStateType => {
+const musicReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         default:
             return state

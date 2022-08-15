@@ -7,7 +7,7 @@ const newsPhoto3 = require("./../assets/img/news_photo3.jpg")
 const ADD_LIKE = "news/ADD_LIKE";
 const DEL_LIKE = "news/DEL_LIKE";
 
-type newsList = {
+type NewsListType = {
     id: number,
     annotation: string,
     newsText: string,
@@ -44,12 +44,12 @@ let initialState = {
             likes: 40,
             likeWasAdd: false
         }
-    ] as Array<newsList>
+    ] as Array<NewsListType>
 }
 
-type initialStateType = typeof initialState;
+type InitialStateType = typeof initialState;
 
-const newsReducer = (state = initialState, action: any): initialStateType => {
+const newsReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case ADD_LIKE: {
             return {
@@ -77,13 +77,13 @@ const newsReducer = (state = initialState, action: any): initialStateType => {
     }
 }
 
-type addDelLikeActionType = {
+type AddDelLikeActionType = {
     type: typeof ADD_LIKE | typeof DEL_LIKE,
     id: number
 }
 
-export const addLike = (id: number): addDelLikeActionType => ({type: ADD_LIKE, id});
-export const delLike = (id: number): addDelLikeActionType => ({type: DEL_LIKE, id});
+export const addLike = (id: number): AddDelLikeActionType => ({type: ADD_LIKE, id});
+export const delLike = (id: number): AddDelLikeActionType => ({type: DEL_LIKE, id});
 
 export default newsReducer;
 
