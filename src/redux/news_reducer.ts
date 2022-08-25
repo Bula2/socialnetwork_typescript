@@ -1,4 +1,5 @@
 import {access} from "fs";
+import {NewsListType} from "../types/types";
 
 const newsPhoto1 = require("./../assets/img/news_photo1.jpg")
 const newsPhoto2 = require("./../assets/img/news_photo2.jpg")
@@ -7,14 +8,6 @@ const newsPhoto3 = require("./../assets/img/news_photo3.jpg")
 const ADD_LIKE = "news/ADD_LIKE";
 const DEL_LIKE = "news/DEL_LIKE";
 
-type NewsListType = {
-    id: number,
-    annotation: string,
-    newsText: string,
-    newsPhoto: string,
-    likes: number,
-    likeWasAdd: boolean
-}
 
 let initialState = {
     newsList: [

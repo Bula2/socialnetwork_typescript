@@ -1,3 +1,5 @@
+import {MusicListType} from "../types/types";
+
 const track1 =  require("./../assets/audio/Unison (Tri Dnya Dozhdya).mp3")
 const track2 =  require("./../assets/audio/2017.mp3")
 const track3 =  require("./../assets/audio/bespoleznye_slova.mp3")
@@ -5,13 +7,7 @@ const trackImg1 = require("./../assets/img/track1.jpg")
 const trackImg2 = require("./../assets/img/track2.png")
 const trackImg3 = require("./../assets/img/track3.jpg")
 
-type MusicListType = {
-    id: number,
-    source: string,
-    name: string,
-    author: string,
-    photo: string
-}
+
 
 let initialState = {
     musicList: [

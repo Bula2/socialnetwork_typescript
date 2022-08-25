@@ -1,12 +1,8 @@
+import {FriendsDataType} from "../types/types";
+
 const f1Img = require("./../assets/img/f1.jpg");
 const f2Img = require ("./../assets/img/f2.jpg");
 const f3Img = require ("./../assets/img/f3.jpg");
-
-type FriendsDataType = {
-    id: number,
-    avatar: string,
-    name: string
-}
 
 let initialState = {
     friendsData: [

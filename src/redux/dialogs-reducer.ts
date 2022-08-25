@@ -1,19 +1,11 @@
+import {DialogsDataType, MessagesDataType} from "../types/types";
+
 const f2Img =  require("./../assets/img/f2.jpg");
 const avatarImg =  require("./../assets/img/avatar.jpg");
 
 const ADD_MES = "dialogs/ADD-MES";
 
-type DialogsDataType = {
-    id: number,
-    name: string
-}
 
-type MessagesDataType = {
-    id: number,
-    avatar: string,
-    name: string,
-    message: string
-}
 
 let initialState = {
     dialogsData: [

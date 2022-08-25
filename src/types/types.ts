@@ -30,5 +30,47 @@ export type UsersType = {
     id: number,
     name: string,
     status: string,
-    photos: ProfilePhotosType
+    photos: ProfilePhotosType,
+    inFriends: boolean
+}
+
+export type DialogsDataType = {
+    id: number,
+    name: string
+}
+
+export type MessagesDataType = {
+    id: number,
+    avatar: string,
+    name: string,
+    message: string
+}
+
+export type NewsListType = {
+    id: number,
+    annotation: string,
+    newsText: string,
+    newsPhoto: string,
+    likes: number,
+    likeWasAdd: boolean
+}
+
+export type FriendsDataType = {
+    id: number,
+    avatar: string,
+    name: string
+}
+
+export type MusicListType = {
+    id: number,
+    source: string,
+    name: string,
+    author: string,
+    photo: string
+}
+
+export type FriendsListType = {
+    id: number,
+    avatar: string,
+    name: string
 }

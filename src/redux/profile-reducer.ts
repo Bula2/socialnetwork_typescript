@@ -133,7 +133,7 @@ export const updateUserStatus = (status: string) => async (dispatch: any) => {
         dispatch(setUserStatus(status));
 }
 
-export const savePhoto = (photo: ProfilePhotosType) => async (dispatch: any) => {
+export const savePhoto = (photo: any) => async (dispatch: any) => {
     let response = await profileAPI.savePhoto(photo);
     if (response.data.resultCode === 0)
         dispatch(savePhotoSuccess(response.data.data.photos));

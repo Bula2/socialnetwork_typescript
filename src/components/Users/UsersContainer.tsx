@@ -14,7 +14,6 @@ import {
 } from "../../redux/users-selectors";
 import {UsersType} from "../../types/types";
 import {AppStateType} from "../../redux/redux-store";
-import {compose} from "redux";
 
 type MapStatePropsType = {
     currentPage: number,
