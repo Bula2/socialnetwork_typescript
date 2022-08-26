@@ -1,5 +1,4 @@
 import {FriendsListType} from "../types/types";
-
 const f1Img = require("../assets/img/f1.jpg");
 const f2Img = require("../assets/img/f2.jpg");
 const f3Img = require("../assets/img/f3.jpg");
@@ -20,13 +19,11 @@ let initialState = {
 }
 
 export type InitialStateType = typeof initialState
-
 const friendsReducer = (state = initialState, action: any):InitialStateType => {
     switch (action.type) {
         default:
             return state
     }
 }
-
 export default friendsReducer;
 

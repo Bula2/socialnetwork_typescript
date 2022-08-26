@@ -42,7 +42,7 @@ let initialState = {
 
 type InitialStateType = typeof initialState;
 
-const newsReducer = (state = initialState, action: any): InitialStateType => {
+const newsReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case ADD_LIKE: {
             return {
@@ -74,9 +74,10 @@ type AddDelLikeActionType = {
     type: typeof ADD_LIKE | typeof DEL_LIKE,
     id: number
 }
-
 export const addLike = (id: number): AddDelLikeActionType => ({type: ADD_LIKE, id});
 export const delLike = (id: number): AddDelLikeActionType => ({type: DEL_LIKE, id});
+
+type ActionsTypes = AddDelLikeActionType;
 
 export default newsReducer;
 

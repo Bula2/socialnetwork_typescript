@@ -1,6 +1,8 @@
 import {profileAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {PostDataType, ProfilePhotosType, ProfileType} from "../types/types";
+import {ThunkAction} from "redux-thunk";
+import {AppStateType} from "./redux-store";
 
 const ADD_POST = "profile/ADD-POST";
 const SET_USER_PROFILE = "profile/SET-USER-PROFILE";
@@ -27,7 +29,7 @@ let initialState = {
 
 type InitialStateType = typeof initialState
 
-const profileReducer = (state = initialState, action: any): InitialStateType => {
+const profileReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -52,13 +54,6 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
             return {
                 ...state,
                 status: action.status
-            }
-        }
-
-        case DELETE_POST: {
-            return {
-                ...state,
-                postData: state.postData.filter(el => el.id !== action.id)
             }
         }
 
@@ -102,14 +97,13 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
             return state;
     }
 }
+
 type AddPostType = {type: typeof ADD_POST, newPost: string}
 export const addPost = (newPost: string): AddPostType => ({type: ADD_POST, newPost});
 type SetUserProfile = {type: typeof SET_USER_PROFILE, profile: ProfileType}
 export const setUserProfile = (profile: ProfileType): SetUserProfile => ({type: SET_USER_PROFILE, profile});
 type SetUserStatusType = {type: typeof SET_USER_STATUS, status: string}
 export const setUserStatus = (status: string): SetUserStatusType => ({type: SET_USER_STATUS, status});
-type DeletePostType = {type: typeof DELETE_POST, id: number}
-export const deletePost = (id: number): DeletePostType => ({type: DELETE_POST, id});
 type UploadPhotoType = {type: typeof UPLOAD_PHOTO, isPhotoUpload: boolean}
 export const uploadPhoto = (isPhotoUpload: boolean): UploadPhotoType => ({type: UPLOAD_PHOTO, isPhotoUpload});
 type SavePhotoSuccessType = {type: typeof SAVE_PHOTO_SUCCESS, photos: ProfilePhotosType}
@@ -118,28 +112,32 @@ type AddDelLikeType = {type: typeof ADD_LIKE | typeof DEL_LIKE, id: number}
 export const addLike = (id: number): AddDelLikeType => ({type: ADD_LIKE, id});
 export const delLike = (id: number): AddDelLikeType => ({type: DEL_LIKE, id});
 
-export const getProfile = (id: number) => async (dispatch: any) => {
+type ActionsTypes = AddPostType |  SetUserProfile | SetUserStatusType | UploadPhotoType | SavePhotoSuccessType | AddDelLikeType;
+
+type ThunksTypes = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
+
+export const getProfile = (id: number): ThunksTypes => async (dispatch) => {
     let response = await profileAPI.getProfile(id);
     dispatch(setUserProfile(response.data));
 }
-export const getUserStatus = (id: number) => async (dispatch: any) => {
+export const getUserStatus = (id: number): ThunksTypes => async (dispatch) => {
     let response = await profileAPI.getStatus(id);
     dispatch(setUserStatus(response.data));
 }
 
-export const updateUserStatus = (status: string) => async (dispatch: any) => {
+export const updateUserStatus = (status: string): ThunksTypes => async (dispatch) => {
     let response = await profileAPI.updateStatus(status);
     if (response.data.resultCode === 0)
         dispatch(setUserStatus(status));
 }
 
-export const savePhoto = (photo: any) => async (dispatch: any) => {
+export const savePhoto = (photo: any): ThunksTypes => async (dispatch) => {
     let response = await profileAPI.savePhoto(photo);
     if (response.data.resultCode === 0)
         dispatch(savePhotoSuccess(response.data.data.photos));
 }
 
-export const saveProfile = (profile: ProfileType) => async (dispatch: any, getState: any) => {
+export const saveProfile = (profile: ProfileType): ThunksTypes => async (dispatch:any, getState: any) => {
     let response = await profileAPI.saveProfile(profile);
     if (response.data.resultCode === 0)
         dispatch(getProfile(getState().auth.userId))
