@@ -1,4 +1,11 @@
 import axios from "axios";
+import {ProfileType} from "../types/types";
+
+export enum ResultCodesEnum {
+    Success = 0,
+    Error = 1,
+    CaptchaIsRequired = 10
+}
 
 const instance = axios.create({
     baseURL: `https://social-network.samuraijs.com/api/1.0/`,
@@ -20,12 +27,29 @@ export const usersAPI = {
 
 }
 
+type LoginUserType = {
+    data: {
+        id: number,
+        email: string,
+        login: string
+    },
+    resultCode: ResultCodesEnum,
+    message: Array<string>
+}
+type LoginMeType = {
+    data: {
+        userId: number
+    },
+    resultCode: ResultCodesEnum,
+    message: Array<string>
+}
+
 export const authAPI ={
     loginUser(){
-        return instance.get(`auth/me`)
+        return instance.get<LoginUserType>(`auth/me`)
     },
-    loginMe(email: string, password: string, rememberMe = false, captcha=null){
-        return instance.post(`auth/login`, {email, password, rememberMe, captcha})
+    loginMe(email: string, password: string, rememberMe = false, captcha: null | string= null){
+        return instance.post<LoginMeType>(`auth/login`, {email, password, rememberMe, captcha})
     },
     logoutMe(){
         return instance.delete(`auth/login`)
@@ -47,7 +71,7 @@ export const profileAPI ={
         formData.append("image", photoFile)
         return instance.put(`profile/photo`, formData)
     },
-    saveProfile(profile: any){
+    saveProfile(profile: ProfileType){
         return instance.put(`profile`, profile)
     }
 }

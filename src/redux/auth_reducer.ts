@@ -1,4 +1,4 @@
-import {authAPI, securityAPI} from "../api/api";
+import {authAPI, ResultCodesEnum, securityAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "./redux-store";
@@ -63,7 +63,7 @@ type ThunksTypes = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType
 
 export const loginUser = (): ThunksTypes => async (dispatch) => {
     let response = await authAPI.loginUser();
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === ResultCodesEnum.Success) {
         let {id, email, login} = response.data.data;
         dispatch(setAuthUserData(id, email, login, true));
     }
@@ -71,12 +71,12 @@ export const loginUser = (): ThunksTypes => async (dispatch) => {
 
 export const loginMe = (email: string, password: string, rememberMe: boolean, captcha: any): ThunksTypes => async (dispatch:any) => {
     let response = await authAPI.loginMe(email, password, rememberMe, captcha);
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(loginUser());
     } else {
-        if (response.data.resultCode === 10)
+        if (response.data.resultCode === ResultCodesEnum.CaptchaIsRequired)
             dispatch(getCaptcha());
-        let errMessage = response.data.messages.length > 0 ? response.data.messages[0] : "Ошибка сервера"
+        let errMessage = response.data.message.length > 0 ? response.data.message[0] : "Ошибка сервера"
         dispatch(stopSubmit("login", {_error: errMessage}));
     }
 }

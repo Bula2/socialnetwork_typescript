@@ -3,7 +3,10 @@ import React from "react";
 
 type PropsType = {
     input: any,
-    meta: any,
+    meta: {
+        touched: boolean,
+        error: string
+    },
     props: any
 }
 
