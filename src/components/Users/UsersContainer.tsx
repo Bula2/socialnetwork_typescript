@@ -1,8 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow, getUsers, setCurrentPage,
-    toggleIsFollowingProgress, unfollow
+    follow, getUsers, unfollow, actions
 } from "../../redux/users-reducer";
 import Users from "./Users";
 import {
@@ -74,5 +73,5 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 
 export default connect<MapStatePropsType, MapDispatchPropsType, MapOwnPropsType, AppStateType>(mapStateToProps,
     {
-        follow, unfollow, setCurrentPage,
-        toggleIsFollowingProgress, getUsers})(UsersContainer);
+        follow, unfollow, setCurrentPage: actions.setCurrentPage,
+        toggleIsFollowingProgress: actions.toggleIsFollowingProgress, getUsers})(UsersContainer);
